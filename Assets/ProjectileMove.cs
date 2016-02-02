@@ -19,7 +19,7 @@ public class ProjectileMove : MonoBehaviour {
         
         
         //GetComponent<Rigidbody2D>().velocity = new Vector2(transform.position.x, transform.position.y * speed);
-        GetComponent<Rigidbody2D>().AddForce(Vector2.up * speed);
+        GetComponent<Rigidbody2D>().AddForce(Vector2.right * speed);
 
         Destroy(gameObject, 3);
 
