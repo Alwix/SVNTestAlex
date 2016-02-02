@@ -6,6 +6,7 @@ public class Projectile : MonoBehaviour
 
     //public int speed;
     public Object projectile;
+    public static float charge = 1f;
 
     // Use this for initialization
     void Start()
@@ -17,6 +18,17 @@ public class Projectile : MonoBehaviour
     void Update()
     {
 
+        if (Input.GetKeyDown(KeyCode.UpArrow))
+        {
+            charge -= 1f;
+            print("charge: " + charge);
+        }
+        else if (Input.GetKeyDown(KeyCode.DownArrow))
+        {
+            charge += 1f;
+            print("charge: " + charge);
+        }
+        charge = Mathf.Clamp(charge, 1f, 10f);
 
         if (Input.GetButtonDown("Fire1"))
         {

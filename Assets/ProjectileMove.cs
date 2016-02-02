@@ -10,12 +10,12 @@ public class ProjectileMove : MonoBehaviour
     private Vector2 target = new Vector2(0, 0);
     public int travelSpeed;
     private Vector2 direction;
-    private float charge = 1f;
+    private float charge = Projectile.charge;
 
     // Use this for initialization
     void Start()
     {
-
+        
     }
 
     // Update is called once per frame
@@ -33,16 +33,6 @@ public class ProjectileMove : MonoBehaviour
         //Destroy apples after 3 seconds
         Destroy(gameObject, 3);
         
-        if (Input.GetKeyDown(KeyCode.UpArrow))
-        {
-            charge -= 0.1f;
-        }
-        else if (Input.GetKeyDown(KeyCode.DownArrow))
-        {
-            charge += 0.1f;
-        }
-        Mathf.Clamp(charge, 1f, 10f);
-        
 
         if (GameObject.FindWithTag("Apple") == null)
         { travelToTarget = true; }
@@ -53,8 +43,8 @@ public class ProjectileMove : MonoBehaviour
             target = Camera.main.ScreenToWorldPoint(mouseClick);
             //rotateToTarget = false;
             travelToTarget = false;
-            print("NEW TARGET: " + target);
-            Debug.DrawLine(Camera.main.transform.position, target, Color.red, 10f);
+            //print("NEW TARGET: " + target);
+            //Debug.DrawLine(Camera.main.transform.position, target, Color.red, 10f);
             direction = (new Vector2(target.x, target.y) - new Vector2(gameObject.transform.position.x, gameObject.transform.position.y)).normalized;
             GetComponent<Rigidbody2D>().velocity = (direction * travelSpeed) * charge;
             //gameObject.GetComponent<Rigidbody2D>().AddForce(direction * travelSpeed);
@@ -67,14 +57,14 @@ public class ProjectileMove : MonoBehaviour
             if (distanceToTarget > 2)
             {
 
-                print("Distance: " + distanceToTarget);
+                //print("Distance: " + distanceToTarget);
                 //gameObject.GetComponent<Rigidbody2D>().AddForce(direction * travelSpeed);
                 //GetComponent<Rigidbody2D>().velocity = direction * travelSpeed;
             }
             else
             {
                 travelToTarget = false;
-                print("travelling COMPLETE");
+                //print("travelling COMPLETE");
             }
         }
     }

@@ -45,6 +45,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\OnCollision.cs" />
      <Compile Include="Assets\Projectile.cs" />
      <Compile Include="Assets\ProjectileMove.cs" />
      <Compile Include="Assets\Scripts\Movement.cs" />
